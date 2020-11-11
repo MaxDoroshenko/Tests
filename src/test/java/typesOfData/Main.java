@@ -2,6 +2,7 @@ package typesOfData;
 import java.util.Scanner;
 
 
+
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -10,45 +11,25 @@ public class Main {
         System.out.println("6.Добавление слова \"hello\" к каждому элементу массива.\n7.Преобразование числового массива в boolean" );
         System.out.print("8.DEMO\nВведите пункт меню: ");
         int a = in.nextInt();
-        switch(a){
-            case(1):
-                calculateAverage(in);
-                break;
-            case(2):
-                calculateFactorial(in);
-                break;
-            case(3):
-                viewPrices(in);
-                break;
-            case(4):
-                checkEvenOdd(in);
-                break;
-            default:
-                System.out.println("Неверный номер пункта меню!");
-                break;
+        switch(a) {
+            case(1): {calculateAverage(in); break;}
+            case(2): {calculateFactorial(in); break;}
+            case(3): {viewPrices(in); break;}
+            case(4): {checkEvenOdd(in); break;}
+            case(5): {arrToString(in); break;}
+            default: {System.out.println("Неверный номер пункта меню!"); break;}
         }
-
     }
 
-    public static void calculateAverage(Scanner in)
-    {
+    public static void calculateAverage(Scanner in) {
         //--------------------------------Посчитать среднее арифметическое массива--------------------------------------
         System.out.println("------------------------Вычисление среднего арифметического массива----------------------");
-        System.out.print("Введите размер массива: ");
-        int size = in.nextInt();                    //Определение размера массива
-        int[] array = new int[size];                //
-
-        for (int i = 0; i < size; i++)
-        {
-            System.out.print("Введите " + (i + 1) + "-й элемент массива: ");   //Заполнение массива
-            array[i] = in.nextInt();                                           //
-        }
+        int[] array = inputArray(in);
         AverageOfArray av = new AverageOfArray();
         System.out.println("Среднее арифметическое массива = " + av.average(array)); //Вызов метода рассчета среднего арифметического
     }
 
-    public static void calculateFactorial(Scanner in)
-    {
+    public static void calculateFactorial(Scanner in) {
         //---------------------------------------Посчитать факториал числа--------------------------------------------
         System.out.println("\n-----------------------------Вычисление факториала числа-------------------------------");
         System.out.print("Введите число для вычисления факториала: ");
@@ -57,13 +38,27 @@ public class Main {
         System.out.printf("Факториал числа !%s = %s", factorial, f.factorial(factorial)); //Вызов метода рассчета факториала
     }
 
-    public static void viewPrices(Scanner in)
-    {
-        ////switch-case или массив?
+    public static void viewPrices(Scanner in) {
+
+        int[][] products = {{1,100}, {2,100}, {3,200}, {4, 150}, {5, 500}};
+        boolean flag = true;
+        while(true){
+            System.out.print("Введите код товара (для выхода введите 0):");
+            int code = in.nextInt();
+            switch (code) {
+                case(1): {System.out.println(products[0][1]); break;}
+                case(2): {System.out.println(products[1][1]); break;}
+                case(3): {System.out.println(products[2][1]); break;}
+                case(4): {System.out.println(products[3][1]); break;}
+                case(5): {System.out.println(products[4][1]); break;}
+                case(0): {return;}
+                default: {System.out.println("Неверный код!"); break;}
+            }
+        }
+
     }
 
-    public static void checkEvenOdd(Scanner in)
-    {
+    public static void checkEvenOdd(Scanner in) {
         System.out.println("\n-------------------------------Проверка чётности числа---------------------------------");
         System.out.print("Введите целое число для проверки на чётность: ");
         int num = in.nextInt();
@@ -74,8 +69,12 @@ public class Main {
             System.out.println("Число нечётное!");
     }
 
-    public static void demo(Scanner in)
-    {
+    public static void arrToString(Scanner in) {
+        ArrayToString ar = new ArrayToString();
+        ar.arrayToString(inputArray(in));
+    }
+
+    public static void demo(Scanner in) {
         calculateAverage(in);
         pause();
         calculateFactorial(in);
@@ -84,13 +83,25 @@ public class Main {
         pause();
         checkEvenOdd(in);
         pause();
+        arrToString(in);
+        pause();
     }
-    public static void pause()
-    {
+    public static void pause() {
         try {                                                       //
             Thread.sleep(1000);                               //Пауза между заданиями
         } catch (InterruptedException e) {                          //
             e.printStackTrace();                                    //
         }
+    }
+
+    public static int[] inputArray(Scanner in) {
+        System.out.print("Введите размер массива: ");
+        int size = in.nextInt();                    //Определение размера массива
+        int[] array = new int[size];                //
+        for (int i = 0; i < size; i++) {
+            System.out.print("Введите " + (i + 1) + "-й элемент массива: ");   //Заполнение массива
+            array[i] = in.nextInt();                                           //
+        }
+        return array;
     }
 }
