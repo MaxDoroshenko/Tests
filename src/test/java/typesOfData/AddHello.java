@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AddHello {
     public static void addHelloToStr(Scanner in) {
-        System.out.println("\n----------Добавление слова \"hello\" к каждому элементу массива символо----------------");
+        System.out.println("\n----------Добавление слова \"hello\" к каждому элементу массива символов---------------");
         System.out.print("Введите размер массива символов: ");
         int size = in.nextInt();                    //Определение размера массива
         char[] array = new char[size];              //

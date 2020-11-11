@@ -88,13 +88,20 @@ public class Main {
 
     public static void intArrToBool(Scanner in) {
         System.out.println("\n----------------Преобразование целочисленного массива в boolean------------------------");
-        int[] arr = new int[3];
-        boolean[] arrB = new boolean[3];
+        int[] arr = inputArray(in);
+        boolean[] arrB = new boolean[arr.length];
         for (int i = 0; i < arr.length; i++) {
             //arrB[i] = arr[i];
+            arrB[i] = (arr[i] != 0);
+        }
+        for (int i = 0; i < arrB.length; i++) {
+            System.out.print(arrB[i]);
+            if (i != (arrB.length - 1))
+                System.out.print(", ");
+            else
+                System.out.println(".");
         }
     }
-
     public static void demo(Scanner in) {
         calculateAverage(in);
         pause();
@@ -108,6 +115,7 @@ public class Main {
         pause();
         addHello(in);
         pause();
+        intArrToBool(in);
     }
     public static void pause() {
         try {                                                       //
