@@ -6,24 +6,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Меню:\n1.Посчитать среднее арифметическое массива.\n2.Посчитать факториал числа");
-        System.out.println("3.Вывести цену товара.\n4.Проверка на чётное/нечётное.\n5.Массив в строку и обратно." );
-        System.out.println("6.Добавление слова \"hello\" к каждому элементу массива.\n7.Преобразование числового массива в boolean" );
-        System.out.print("8.DEMO\nВведите пункт меню: ");
-        int a = in.nextInt();
-        switch(a) {
-            case(1): {calculateAverage(in); break;}
-            case(2): {calculateFactorial(in); break;}
-            case(3): {viewPrices(in); break;}
-            case(4): {checkEvenOdd(in); break;}
-            case(5): {arrToString(in); break;}
-            default: {System.out.println("Неверный номер пункта меню!"); break;}
+        while (true) {
+            System.out.println("\nМеню:\n1.Посчитать среднее арифметическое массива.\n2.Посчитать факториал числа");
+            System.out.println("3.Вывести цену товара.\n4.Проверка на чётное/нечётное.\n5.Массив в строку и обратно." );
+            System.out.println("6.Добавление слова \"hello\" к каждому элементу массива.\n7.Преобразование числового массива в boolean" );
+            System.out.print("8.DEMO\n0.Выход.\nВведите пункт меню: ");
+            int a = in.nextInt();
+            switch(a) {
+                case(1): {calculateAverage(in); break;}
+                case(2): {calculateFactorial(in); break;}
+                case(3): {viewPrices(in); break;}
+                case(4): {checkEvenOdd(in); break;}
+                case(5): {arrToString(in); break;}
+                case(6): {addHello(in); break;}
+                case(7): {intArrToBool(in); break;}
+                case(8): {demo(in); break;}
+                case(0): {return;}
+                default: {System.out.println("Неверный номер пункта меню!"); break;}
+            }
         }
     }
 
     public static void calculateAverage(Scanner in) {
         //--------------------------------Посчитать среднее арифметическое массива--------------------------------------
-        System.out.println("------------------------Вычисление среднего арифметического массива----------------------");
+        System.out.println("\n------------------------Вычисление среднего арифметического массива----------------------");
         int[] array = inputArray(in);
         AverageOfArray av = new AverageOfArray();
         System.out.println("Среднее арифметическое массива = " + av.average(array)); //Вызов метода рассчета среднего арифметического
@@ -35,22 +41,22 @@ public class Main {
         System.out.print("Введите число для вычисления факториала: ");
         int factorial = in.nextInt();
         Factorial f = new Factorial();
-        System.out.printf("Факториал числа !%s = %s", factorial, f.factorial(factorial)); //Вызов метода рассчета факториала
+        System.out.printf("Факториал числа !%s = %s\n\n", factorial, f.factorial(factorial)); //Вызов метода рассчета факториала
     }
 
     public static void viewPrices(Scanner in) {
-
+        System.out.println("\n-------------------------Отображение цены товара по его коду---------------------------");
         int[][] products = {{1,100}, {2,100}, {3,200}, {4, 150}, {5, 500}};
         boolean flag = true;
         while(true){
             System.out.print("Введите код товара (для выхода введите 0):");
             int code = in.nextInt();
             switch (code) {
-                case(1): {System.out.println(products[0][1]); break;}
-                case(2): {System.out.println(products[1][1]); break;}
-                case(3): {System.out.println(products[2][1]); break;}
-                case(4): {System.out.println(products[3][1]); break;}
-                case(5): {System.out.println(products[4][1]); break;}
+                case(1): {System.out.println("Цена выбранного товара: " + products[0][1]); break;}
+                case(2): {System.out.println("Цена выбранного товара: " + products[1][1]); break;}
+                case(3): {System.out.println("Цена выбранного товара: " + products[2][1]); break;}
+                case(4): {System.out.println("Цена выбранного товара: " + products[3][1]); break;}
+                case(5): {System.out.println("Цена выбранного товара: " + products[4][1]); break;}
                 case(0): {return;}
                 default: {System.out.println("Неверный код!"); break;}
             }
@@ -70,8 +76,23 @@ public class Main {
     }
 
     public static void arrToString(Scanner in) {
+        System.out.println("\n------------Преобразование целочисленного массива в строку и обратно-------------------");
         ArrayToString ar = new ArrayToString();
         ar.arrayToString(inputArray(in));
+    }
+
+    public static void addHello(Scanner in) {
+        AddHello add = new AddHello();
+        add.addHelloToStr(in);
+    }
+
+    public static void intArrToBool(Scanner in) {
+        System.out.println("\n----------------Преобразование целочисленного массива в boolean------------------------");
+        int[] arr = new int[3];
+        boolean[] arrB = new boolean[3];
+        for (int i = 0; i < arr.length; i++) {
+            //arrB[i] = arr[i];
+        }
     }
 
     public static void demo(Scanner in) {
@@ -84,6 +105,8 @@ public class Main {
         checkEvenOdd(in);
         pause();
         arrToString(in);
+        pause();
+        addHello(in);
         pause();
     }
     public static void pause() {
