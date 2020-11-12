@@ -7,7 +7,7 @@ public class Main {
         String a = "Parameter1";
         String b = "Parameter2";
         System.out.println("Имя класса и параметр 1: " + getNameAndParemeter1.getNameOfClass(a));
-        System.out.println("Имя класса и параметр 2: " + getNameAndParemeter1.getNameOfClass(b));
+        System.out.println("Имя класса и параметр 2: " + getNameAndParemeter2.getNameOfClass(b));
     }
 
 }
