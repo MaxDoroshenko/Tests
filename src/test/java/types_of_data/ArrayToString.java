@@ -1,4 +1,4 @@
-package typesOfData;
+package types_of_data;
 import java.util.Arrays;
 
 public class ArrayToString {

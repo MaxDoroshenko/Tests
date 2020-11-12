@@ -1,4 +1,4 @@
-package typesOfData;
+package types_of_data;
 
 public class Factorial {
     public static int factorial(int f)

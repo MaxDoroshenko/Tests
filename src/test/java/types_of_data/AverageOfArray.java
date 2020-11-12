@@ -1,4 +1,4 @@
-package typesOfData;
+package types_of_data;
 
 public class AverageOfArray {
     public static float average(int[] array) {

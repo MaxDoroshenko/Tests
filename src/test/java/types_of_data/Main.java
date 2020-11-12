@@ -1,4 +1,4 @@
-package typesOfData;
+package types_of_data;
 import java.util.Scanner;
 
 
@@ -7,9 +7,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         while (true) {
-            System.out.println("\nМеню:\n1.Посчитать среднее арифметическое массива.\n2.Посчитать факториал числа");
+            System.out.println("\nМеню:\n1.Посчитать среднее арифметическое массива.\n2.Посчитать факториал числа.");
             System.out.println("3.Вывести цену товара.\n4.Проверка на чётное/нечётное.\n5.Массив в строку и обратно." );
-            System.out.println("6.Добавление слова \"hello\" к каждому элементу массива.\n7.Преобразование числового массива в boolean" );
+            System.out.println("6.Добавление слова \"hello\" к каждому элементу массива.\n7.Преобразование числового массива в boolean." );
             System.out.print("8.DEMO\n0.Выход.\nВведите пункт меню: ");
             int a = in.nextInt();
             switch(a) {

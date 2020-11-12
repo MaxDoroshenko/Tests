@@ -1,4 +1,4 @@
-package typesOfData;
+package types_of_data;
 
 public class EvenOdd {
     public static boolean checkEvenOdd(int num){
