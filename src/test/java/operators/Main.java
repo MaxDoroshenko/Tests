@@ -9,7 +9,7 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             System.out.print("МЕНЮ:\n1.Запуск.\n0.Выход.\nВведите значение: ");
             while (!scan.hasNextInt()) {
-                System.out.print("ОШИБКА:Введите 1 или 0!\n\nМЕНЮ:\n1.Запуск.\n0.Выход.\nВведите значение: ");
+                System.out.print("ОШИБКА: Введите 1 или 0!\n\nМЕНЮ:\n1.Запуск.\n0.Выход.\nВведите значение: ");
                 scan.next();
             }
             int menu = scan.nextInt();
@@ -30,7 +30,7 @@ public class Main {
                     break;
                 }
                 case(0): return;
-                default: {System.out.print("ОШИБКА:Введите 1 или 0!\n\n");break;}
+                default: {System.out.print("ОШИБКА: Введите 1 или 0!\n\n");break;}
             }
         }
     }
@@ -41,12 +41,12 @@ public class Main {
         //Валидация параметра ВРЕМЯ на тип byte и диапазон 0-23
         while (time < 0 || time > 23) {
             while (!scan.hasNextByte()) {
-                System.out.print("ОШИБКА:Параметр ВРЕМЯ не соответствует числовому диапазону!\nПовторите ввод: ");
+                System.out.print("ОШИБКА: Параметр ВРЕМЯ не соответствует числовому диапазону!\nПовторите ввод: ");
                 scan.next();
             }
             time = scan.nextByte();
             if (time < 0 || time > 23) {
-                System.out.print("ОШИБКА:Параметр ВРЕМЯ не соответствует диапазону 0-23!\nПовторите ввод: ");
+                System.out.print("ОШИБКА: Параметр ВРЕМЯ не соответствует диапазону 0-23!\nПовторите ввод: ");
             }
         }
         return time;
@@ -58,12 +58,12 @@ public class Main {
         //Валидация параметра ДЕНЬГИ на тип int и неотрецательное число
         while (money < 0) {
             while (!scan.hasNextInt()) {
-                System.out.print("ОШИБКА:Параметр ДЕНЬГИ не соответствует числовому диапазону!\nПовторите ввод: ");
+                System.out.print("ОШИБКА: Параметр ДЕНЬГИ не соответствует числовому диапазону!\nПовторите ввод: ");
                 scan.next();
             }
             money = scan.nextInt();
             if (money < 0) {
-                System.out.print("ОШИБКА:Параметр ДЕНЬГИ отрицательный!\nПовторите ввод: ");
+                System.out.print("ОШИБКА: Параметр ДЕНЬГИ отрицательный!\nПовторите ввод: ");
             }
         }
         return money;
