@@ -47,7 +47,7 @@ public class Main {
     public static void viewPrices(Scanner in) {
         System.out.println("\n-------------------------Отображение цены товара по его коду---------------------------");
         int[][] products = {{1,100}, {2,100}, {3,200}, {4, 150}, {5, 500}};
-        boolean flag = true;
+        //boolean flag = true;
         while(true){
             System.out.print("Введите код товара (для выхода введите 0):");
             int code = in.nextInt();
