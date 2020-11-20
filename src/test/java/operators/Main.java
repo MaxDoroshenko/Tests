@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
 
         while (true) {
-
             Scanner scan = new Scanner(System.in);
             System.out.print("МЕНЮ:\n1.Запуск.\n0.Выход.\nВведите значение: ");
             while (!scan.hasNextInt()) {
