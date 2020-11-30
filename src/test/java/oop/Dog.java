@@ -42,7 +42,11 @@ public class Dog implements Beast{
     public void height(String value) {
         if (value == "ft")
             System.out.println("Рост собаки " + name + ": " +  h/0.3048 + " футов(-а)");
-        else if (value == "yd")
+        else height();
+    }
+
+    public void height(String value, int a) {
+        if (value == "yd")
             System.out.println("Рост собаки " + name + ": " +  h/0.9144 + " ярдов(-а)");
         else height();
     }
@@ -53,6 +57,7 @@ public class Dog implements Beast{
         else if (value == "oz")
             System.out.println("Вес собаки " + name + ": " + w/0.02835 + " унций(-я)");
         else weight();
+
     }
 
     public void move (String value) {
@@ -80,7 +85,7 @@ public class Dog implements Beast{
         // весом 8.5кг, которая бежит на 200м и питается кормом
         Rex.height(); //Вывод роста собаки Рекс в метрах
         Rex.height("m"); //Вывод роста собаки Рекс в метрах
-        Rex.height("ft"); //Вывод роста собаки Рекс в футах
+        //Rex.height("ft"); //Вывод роста собаки Рекс в футах
         Rex.height("yd"); //Вывод роста собаки Рекс в ярдах
 
         Rex.weight(); //Вывод веса собаки Рекс в килограммах
@@ -95,5 +100,9 @@ public class Dog implements Beast{
 
         Rex.eat(); //Вывод того, что ест собака Рекс (корм)
         Rex.eat("Сосиска"); //Вывод того, что ест собака Рекс (сосиска)
+
+        Rex.height("yd", 1);
     }
+
+
 }
