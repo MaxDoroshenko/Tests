@@ -11,9 +11,10 @@ public class JsonToArray {
                 .add("Вася")
                 .add("Петя")
                 .build();
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < array.length; i++){
             array[i]= jo.getString(i);
         }
+
         for (int j = 0; j < 3; j++){
             System.out.println(array[j]);
         }
