@@ -13,6 +13,7 @@ public class Task1 {
     public void task1() {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
+        //Создание папки
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
@@ -20,6 +21,7 @@ public class Task1 {
                 then().
                 statusCode(201);
 
+        //Удаление папки
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
@@ -27,6 +29,7 @@ public class Task1 {
                 then().
                 statusCode(204);
 
+        //Проверка удаления папки
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
