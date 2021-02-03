@@ -9,6 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 
+
 public class Task6 {
     @Test
     @DisplayName("Задание 6")
@@ -39,7 +40,6 @@ public class Task6 {
                 post("/resources/copy?from=/test.docx&path=/test/foo/autotest.docx").
                 then().
                 statusCode(201);
-
         //Удаление папки test
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
