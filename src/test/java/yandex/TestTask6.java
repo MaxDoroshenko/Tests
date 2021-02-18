@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class TestTask6 {
     @Test
     @DisplayName("Задание 6")
-    public void task6() {
+    public void task6() throws InterruptedException {
         RestAssured.baseURI = "https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -24,6 +24,7 @@ public class TestTask6 {
                 put("/resources?path=/test").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Создание папки foo
         given().
@@ -32,6 +33,7 @@ public class TestTask6 {
                 put("/resources?path=/test/foo").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Создание файла autotest в папке(копирование имеющегося)
         given().
@@ -40,6 +42,7 @@ public class TestTask6 {
                 post("/resources/copy?from=/test.docx&path=/test/foo/autotest.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
         //Удаление папки test
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
@@ -47,6 +50,7 @@ public class TestTask6 {
                 delete("/resources?path=/test").
                 then().
                 statusCode(202);
+        Thread.sleep(2000);
 
         //Очистка корзины
         given().
@@ -55,6 +59,7 @@ public class TestTask6 {
                 delete("/trash/resources").
                 then().
                 statusCode(202);
+        Thread.sleep(2000);
 
         //Проверка, что корзина очищена
         given().
@@ -63,6 +68,7 @@ public class TestTask6 {
                 get("/trash/resources?path=/").
                 then().
                 statusCode(200).body("_embedded.total", equalTo(0));
+        Thread.sleep(2000);
 
         //Проверка удаления папки test
         given().
@@ -71,5 +77,6 @@ public class TestTask6 {
                 get("/resources?path=/test").
                 then().
                 statusCode(404);
+        Thread.sleep(2000);
     }
 }

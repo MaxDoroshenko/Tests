@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 public class TestTask2 {
     @Test
     @DisplayName("Задание 2")
-    public void task2() {
+    public void task2() throws InterruptedException {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -21,6 +21,7 @@ public class TestTask2 {
                 put("/resources?path=/mdoroshenko").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
         //Создание файла в папке(копирование имеющегося)
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
@@ -28,6 +29,7 @@ public class TestTask2 {
                 post("/resources/copy?from=/test.docx&path=/mdoroshenko/test.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
         //Удаление созданного файла
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
@@ -35,6 +37,7 @@ public class TestTask2 {
                 delete("/resources?path=/mdoroshenko/test.docx").
                 then().
                 statusCode(204);
+        Thread.sleep(2000);
         //Удаление созданной папки
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
@@ -42,5 +45,6 @@ public class TestTask2 {
                 delete("/resources?path=/mdoroshenko").
                 then().
                 statusCode(204);
+        Thread.sleep(2000);
     }
 }

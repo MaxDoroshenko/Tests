@@ -11,7 +11,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class TestTask5 {
     @Test
     @DisplayName("Задание 5")
-    public void task5() {
+    public void task5() throws InterruptedException {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -22,6 +22,7 @@ public class TestTask5 {
                 put("/resources?path=/test").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Создание папки foo
         given().
@@ -30,6 +31,7 @@ public class TestTask5 {
                 put("/resources?path=/test/foo").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Создание файла autotest в папке(копирование имеющегося)
         given().
@@ -38,6 +40,7 @@ public class TestTask5 {
                 post("/resources/copy?from=/test.docx&path=/test/foo/autotest.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Получение метаданных папки test
         given().
@@ -46,6 +49,7 @@ public class TestTask5 {
                 get("/resources?path=/test").
                 then().
                 statusCode(200).body("type", equalTo("dir"));
+        Thread.sleep(2000);
 
 
 
@@ -56,6 +60,7 @@ public class TestTask5 {
                 delete("/resources?path=/test").
                 then().
                 statusCode(202);
+        Thread.sleep(2000);
 
         //Проверка удаления
         given().
@@ -64,5 +69,6 @@ public class TestTask5 {
                 get("/resources?path=/test").
                 then().
                 statusCode(404);
+        Thread.sleep(2000);
     }
 }

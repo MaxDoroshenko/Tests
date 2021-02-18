@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 public class TestTask1 {
     @Test
     @DisplayName("Задание 1")
-    public void task1() {
+    public void task1() throws InterruptedException {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -21,6 +21,7 @@ public class TestTask1 {
                 put("/resources?path=/mdoroshenko").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Удаление папки
         given().
@@ -29,6 +30,7 @@ public class TestTask1 {
                 delete("/resources?path=/mdoroshenko").
                 then().
                 statusCode(204);
+        Thread.sleep(2000);
 
         //Проверка удаления папки
         given().
@@ -37,5 +39,8 @@ public class TestTask1 {
                 get("/resources?path=/mdoroshenko").
                 then().
                 statusCode(404);
+        Thread.sleep(2000);
+
+
     }
 }

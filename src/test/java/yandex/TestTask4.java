@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 public class TestTask4 {
     @Test
     @DisplayName("Задание 4")
-    public void task4() {
+    public void task4() throws InterruptedException {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -25,6 +25,7 @@ public class TestTask4 {
                     statusCode(200).
                 extract().
                     response();
+        Thread.sleep(2000);
         //Получение размера всех файлов в корзине
         float firstTrashSize = response.jsonPath().getFloat("trash_size");
         System.out.println("Изначальный размер файлов в корзине: " + firstTrashSize + " bytes");
@@ -36,6 +37,7 @@ public class TestTask4 {
                 put("/resources?path=/mdoroshenko").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Создание файлов в папке(копирование имеющегося)
         given().
@@ -44,12 +46,14 @@ public class TestTask4 {
                 post("/resources/copy?from=/test.docx&path=/mdoroshenko/test.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
                 post("/resources/copy?from=/test.docx&path=/mdoroshenko/test1.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Удаление созданных файлов
         given().
@@ -58,12 +62,14 @@ public class TestTask4 {
                 delete("/resources?path=/mdoroshenko/test.docx").
                 then().
                 statusCode(204);
+        Thread.sleep(2000);
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
                 delete("/resources?path=/mdoroshenko/test1.docx").
                 then().
                 statusCode(204);
+        Thread.sleep(2000);
 
         //Получение информации о диске
         Response response1 = given().
@@ -74,6 +80,7 @@ public class TestTask4 {
                 statusCode(200).
                 extract().
                 response();
+        Thread.sleep(2000);
         //Получение размера всех файлов в корзине
         float secondTrashSize = response1.jsonPath().getFloat("trash_size");
         System.out.println("Конечный размер файлов в корзине: " + secondTrashSize + " bytes");
@@ -87,6 +94,7 @@ public class TestTask4 {
                 statusCode(200).
                 extract().
                 response();
+        Thread.sleep(2000);
         float sizeOfFirstFile = response2.jsonPath().getFloat("size");
         System.out.println("Размер первого файла: " + sizeOfFirstFile + " bytes");
 
@@ -99,6 +107,7 @@ public class TestTask4 {
                 statusCode(200).
                 extract().
                 response();
+        Thread.sleep(2000);
         //Получение размера файлов в корзине
         float sizeOfSecondFile = response3.jsonPath().getFloat("size");
         System.out.println("Размер второго файла: " + sizeOfSecondFile + " bytes");
@@ -117,12 +126,14 @@ public class TestTask4 {
                 put("/trash/resources/restore?path=test.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
                 put("/trash/resources/restore?path=test1.docx").
                 then().
                 statusCode(201);
+        Thread.sleep(2000);
 
         //Удаление созданной папки
         given().
@@ -131,6 +142,7 @@ public class TestTask4 {
                 delete("/resources?path=/mdoroshenko").
                 then().
                 statusCode(202);
+        Thread.sleep(2000);
     }
 
     public static void comparing(float firstTrashSize, float secondTrashSize, float sizeOfFirstFile, float sizeOfSecondFile)

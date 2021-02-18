@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: yandex.TestTask3
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 14.528 s <<< FAILURE! - in yandex.TestTask3
+task3(yandex.TestTask3)  Time elapsed: 14.515 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <201> but was <404>.
+
+	at yandex.TestTask3.task3(TestTask3.java:47)
+
