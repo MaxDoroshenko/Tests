@@ -10,7 +10,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 
 
-public class Task6 {
+public class TestTask6 {
     @Test
     @DisplayName("Задание 6")
     public void task6() {

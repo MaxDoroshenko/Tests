@@ -7,10 +7,10 @@ import org.junit.jupiter.api.DisplayName;
 
 import static io.restassured.RestAssured.given;
 
-public class Task2 {
+public class TestTask1 {
     @Test
-    @DisplayName("Задание 2")
-    public void task2() {
+    @DisplayName("Задание 1")
+    public void task1() {
         RestAssured.baseURI ="https://cloud-api.yandex.net/v1/disk";
         RequestSpecification request = given();
 
@@ -21,26 +21,21 @@ public class Task2 {
                 put("/resources?path=/mdoroshenko").
                 then().
                 statusCode(201);
-        //Создание файла в папке(копирование имеющегося)
-        given().
-                header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
-                when().
-                post("/resources/copy?from=/test.docx&path=/mdoroshenko/test.docx").
-                then().
-                statusCode(201);
-        //Удаление созданного файла
-        given().
-                header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
-                when().
-                delete("/resources?path=/mdoroshenko/test.docx").
-                then().
-                statusCode(204);
-        //Удаление созданной папки
+
+        //Удаление папки
         given().
                 header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
                 when().
                 delete("/resources?path=/mdoroshenko").
                 then().
                 statusCode(204);
+
+        //Проверка удаления папки
+        given().
+                header("Authorization", "OAuth AgAAAAAdwzaYAADLW5zOpffTIUzFiusGDu3b8yQ").
+                when().
+                get("/resources?path=/mdoroshenko").
+                then().
+                statusCode(404);
     }
 }

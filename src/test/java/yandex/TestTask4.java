@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 
 import static io.restassured.RestAssured.given;
 
-public class Task4 {
+public class TestTask4 {
     @Test
     @DisplayName("Задание 4")
     public void task4() {
